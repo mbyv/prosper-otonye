@@ -1,5 +1,5 @@
-import { lazy, Suspense, useEffect, useRef, useState, type ReactNode } from 'react'
-import { input } from './input'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
+import { Reveal, SectionTitle, useScrollInput } from './components/ui'
 import { education, experience, profile, projects, skillGroups, stats, type Project } from './data'
 
 const Scene = lazy(() => import('./components/Scene'))
@@ -22,35 +22,6 @@ function useTyping(words: string[]) {
     return () => clearTimeout(timer)
   }, [words])
   return text
-}
-
-function Reveal({ children, delay = 0, className = '' }: { children: ReactNode; delay?: number; className?: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  useEffect(() => {
-    const el = ref.current!
-    const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { el.classList.add('in'); io.disconnect() } },
-      { threshold: 0.15 },
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-  return (
-    <div ref={ref} className={`reveal ${className}`} style={{ transitionDelay: `${delay}ms` }}>
-      {children}
-    </div>
-  )
-}
-
-function SectionTitle({ index, title }: { index: string; title: string }) {
-  return (
-    <Reveal>
-      <h2 className="section-title">
-        <span className="mono accent">{index}</span> {title}
-        <span className="line" />
-      </h2>
-    </Reveal>
-  )
 }
 
 function ProjectCard({ p, i }: { p: Project; i: number }) {
@@ -81,6 +52,7 @@ function ProjectCard({ p, i }: { p: Project; i: number }) {
         <p className="muted">{p.description}</p>
         <ul className="tags">{p.tags.map((t) => <li key={t}>{t}</li>)}</ul>
         <div className="links">
+          {p.caseStudy && <a className="case-link" href={p.caseStudy}>Read case study →</a>}
           {p.live && <a href={p.live} target="_blank" rel="noreferrer">Live site ↗</a>}
           {p.github && <a href={p.github} target="_blank" rel="noreferrer">Source code ↗</a>}
         </div>
@@ -93,26 +65,7 @@ export default function App() {
   const typed = useTyping(profile.roles)
   const [menuOpen, setMenuOpen] = useState(false)
   const [copied, setCopied] = useState(false)
-  const progressRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const onScroll = () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight
-      input.scroll = max > 0 ? window.scrollY / max : 0
-      progressRef.current?.style.setProperty('transform', `scaleX(${input.scroll})`)
-    }
-    const onMove = (e: PointerEvent) => {
-      input.mx = (e.clientX / window.innerWidth) * 2 - 1
-      input.my = (e.clientY / window.innerHeight) * 2 - 1
-    }
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('pointermove', onMove, { passive: true })
-    return () => {
-      window.removeEventListener('scroll', onScroll)
-      window.removeEventListener('pointermove', onMove)
-    }
-  }, [])
+  const progressRef = useScrollInput()
 
   const copyEmail = async () => {
     try {
@@ -187,8 +140,8 @@ export default function App() {
                   senior-level discipline solo: architecture decision records, CI/CD, pre-commit checks and end-to-end tests.
                 </p>
                 <p className="muted">
-                  I'm based in {profile.location} and actively looking for a <strong>full-time role in Canada</strong>. I'm
-                  relocation-ready and can start quickly.
+                  I'm based in {profile.location} and open to <strong>full-time</strong> front-end, back-end and full-stack
+                  roles.
                 </p>
               </div>
             </Reveal>
@@ -267,8 +220,8 @@ export default function App() {
             <p className="mono accent">05. What's next?</p>
             <h2 className="contact-title">Let's build something<br /><span className="gradient-text">great together.</span></h2>
             <p className="muted lead center">
-              I'm looking for a full-time front-end, back-end or full-stack role in Canada, and I'm open to visa sponsorship
-              and relocation. If your team ships with React, Next.js, Node.js or Postgres, I'd love to talk.
+              I'm looking for a full-time front-end, back-end or full-stack role. If your team ships with React, Next.js,
+              Node.js or Postgres, I'd love to talk.
             </p>
             <div className="cta center">
               <a className="btn primary big" href={`mailto:${profile.email}?subject=Opportunity%20for%20Prosper`}>Say hello ✉</a>

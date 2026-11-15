@@ -210,7 +210,7 @@ function CameraRig() {
   return null
 }
 
-export default function Scene() {
+export default function Scene({ orb = true }: { orb?: boolean }) {
   return (
     <Canvas
       className="scene"
@@ -220,7 +220,7 @@ export default function Scene() {
     >
       <CameraRig />
       <FlowField />
-      <Orb />
+      {orb && <Orb />}
     </Canvas>
   )
 }

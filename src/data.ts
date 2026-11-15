@@ -5,7 +5,7 @@ export const profile = {
   firstName: 'Prosper',
   roles: ['Full-Stack Developer', 'React & Next.js Engineer', 'Node.js / Supabase Builder', 'AI-Augmented Engineer'],
   location: 'London, UK',
-  availability: 'Open to roles in Canada · relocation-ready',
+  availability: 'Available for full-time roles',
   email: 'prosperbillions162@gmail.com',
   github: 'https://github.com/mbyv',
   linkedin: 'https://www.linkedin.com/in/prosper-otonye-69689225b',
@@ -35,6 +35,7 @@ export type Project = {
   tags: string[]
   github?: string
   live?: string
+  caseStudy?: string
   featured?: boolean
 }
 
@@ -47,6 +48,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL'],
     github: 'https://github.com/mbyv/D4TF-CONECT',
     live: 'https://d4tf-connect.com',
+    caseStudy: './d4tf-connect/',
     featured: true,
   },
   {

@@ -5,6 +5,7 @@ Dark, futuristic 3D portfolio built with **React 19, TypeScript, Vite and Three.
 - Flowing particle "data ocean" and morphing particle orb that react to scroll and mouse
 - 3D-tilt project cards, scroll reveals, typing effect and scroll progress bar
 - Fewer particles on phones; respects "reduced motion"; the 3D bundle lazy-loads so text appears instantly
+- **Case study page** for D4TF Connect at `/d4tf-connect/` (`src/CaseStudy.tsx`)
 - **All content lives in `src/data.ts`**, so you can edit text, projects and links there
 
 ## Run locally
