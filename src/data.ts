@@ -3,27 +3,27 @@
 export const profile = {
   name: 'Prosper Otonye',
   firstName: 'Prosper',
-  roles: ['Full-Stack Developer', 'React & Next.js Engineer', 'Node.js / Supabase Builder', 'AI-Augmented Engineer'],
+  roles: ['Full-Stack Developer', 'React & Next.js Engineer', 'Vue.js Developer', 'Python / Django Engineer', 'Node.js & Postgres Builder', 'AI-Augmented Engineer'],
   location: 'London, UK',
-  availability: 'Available for full-time roles',
+  availability: 'Available now · open to full-time roles',
   email: 'prosperbillions162@gmail.com',
   github: 'https://github.com/mbyv',
   linkedin: 'https://www.linkedin.com/in/prosper-otonye-69689225b',
   cv: './Prosper_Otonye_CV.pdf',
   summary:
-    "Full-stack developer with three years' experience building and shipping production web applications across startup, agency, and founder-led environments. I own features end-to-end — schema to deployed UI — and run an AI-augmented workflow to move fast without cutting corners on engineering practice.",
+    "I've been building for the web for 6+ years. I started freelancing at 18, shipping sites for real clients, and grew into a full-stack engineer who takes products from a blank repo to paying users. I own features end-to-end, from database schema to deployed UI, and use an AI-augmented workflow to move fast without cutting corners on tests, CI or code quality.",
 }
 
 export const stats = [
-  { value: '3+', label: 'Years shipping production web apps' },
-  { value: '2', label: 'Live products built & run solo' },
-  { value: '6+', label: 'Projects deployed end-to-end' },
-  { value: '100%', label: 'Ownership: schema → UI → deploy' },
+  { value: '6+', label: 'Years building for the web, starting as a freelancer at 18' },
+  { value: '7+', label: 'Projects shipped end-to-end' },
+  { value: '2', label: 'Live products founded, built & run solo' },
+  { value: '0 → 1', label: 'Idea to production: schema, UI, payments, deploy' },
 ]
 
 export const skillGroups = [
-  { title: 'Frontend', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML5 / CSS3', 'React Native', 'UI/UX'] },
-  { title: 'Backend & Data', items: ['Node.js', 'Express', 'PostgreSQL', 'Supabase', 'Prisma', 'Firebase', 'REST APIs', 'Python'] },
+  { title: 'Frontend', items: ['React', 'Next.js', 'Vue.js', 'TypeScript', 'JavaScript', 'Tailwind CSS', 'HTML5 / CSS3', 'React Native', 'UI/UX'] },
+  { title: 'Backend & Data', items: ['Node.js', 'Express', 'Python', 'Django', 'PostgreSQL', 'Supabase', 'Prisma', 'Firebase', 'REST APIs', 'Stripe'] },
   { title: 'Quality & Delivery', items: ['Jest', 'Vitest', 'Cypress', 'GitHub Actions CI/CD', 'Vercel / Netlify', 'Docker', 'Git / GitHub'] },
   { title: 'AI & Growth', items: ['Claude / Vercel AI SDK', 'AI Agents', 'Prompt Engineering', 'SEO Auditing', 'Lighthouse Perf', 'WordPress'] },
 ]
@@ -130,6 +130,16 @@ export const experience = [
     points: [
       'Built and maintained responsive interfaces in HTML, CSS and JavaScript from design handoff.',
       'Took part in code reviews with the product team.',
+    ],
+  },
+  {
+    role: 'Freelance Web Developer',
+    company: 'Self-employed',
+    period: '2020 — 2021',
+    points: [
+      'Started freelancing at 18, designing and building websites for clients and taking each one from brief to launch.',
+      'Taught myself the modern stack on real projects: React, Vue.js, Python and Django.',
+      'Learned to scope work, communicate with clients and deliver on deadlines, which I still rely on today.',
     ],
   },
 ]

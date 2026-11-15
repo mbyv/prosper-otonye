@@ -96,6 +96,7 @@ export default function App() {
             </a>
           ))}
           <a className="btn small" href={profile.cv} target="_blank" rel="noreferrer">Résumé</a>
+          <a className="btn small primary" href={`mailto:${profile.email}?subject=Let's%20talk%20%E2%80%94%20opportunity%20for%20Prosper`}>Say hello ✉</a>
         </nav>
       </header>
 
@@ -110,13 +111,14 @@ export default function App() {
               <span className="mono muted">&gt; </span>{typed}<span className="caret">▍</span>
             </p>
             <p className="lead muted">
-              I build and ship production web apps end-to-end — from Postgres schema to polished UI — with React, Next.js,
-              TypeScript and Node.js. Currently running two live products I built solo.
+              <strong>6+ years</strong> turning ideas into fast, production-grade web apps. I work across the whole
+              stack (React, Next.js, Vue, Node.js, Python/Django and Postgres) and I've founded, built and launched{' '}
+              <strong>two live products</strong> on my own. Give me a problem and I'll ship the solution.
             </p>
             <div className="cta">
               <a className="btn primary" href="#work">View my work</a>
               <a className="btn" href={profile.cv} target="_blank" rel="noreferrer">Download CV</a>
-              <a className="btn ghost" href="#contact">Hire me →</a>
+              <a className="btn ghost" href={`mailto:${profile.email}?subject=Let's%20talk%20%E2%80%94%20opportunity%20for%20Prosper`}>Say hello ✉</a>
             </div>
             <div className="socials mono">
               <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
@@ -140,8 +142,9 @@ export default function App() {
                   senior-level discipline solo: architecture decision records, CI/CD, pre-commit checks and end-to-end tests.
                 </p>
                 <p className="muted">
-                  I'm based in {profile.location} and open to <strong>full-time</strong> front-end, back-end and full-stack
-                  roles.
+                  What you get: an engineer who has worked with clients, startups and an agency, and as a founder, who understands
+                  the product as well as the code, and who doesn't need hand-holding to ship. Based in {profile.location},
+                  open to <strong>full-time</strong> front-end, back-end and full-stack roles.
                 </p>
               </div>
             </Reveal>
@@ -218,13 +221,14 @@ export default function App() {
         <section id="contact" className="contact">
           <Reveal>
             <p className="mono accent">05. What's next?</p>
-            <h2 className="contact-title">Let's build something<br /><span className="gradient-text">great together.</span></h2>
+            <h2 className="contact-title">Got a product to ship?<br /><span className="gradient-text">Let's make it happen.</span></h2>
             <p className="muted lead center">
-              I'm looking for a full-time front-end, back-end or full-stack role. If your team ships with React, Next.js,
-              Node.js or Postgres, I'd love to talk.
+              I'm ready for my next full-time role, front-end, back-end or full-stack. If your team builds with React,
+              Next.js, Vue, Node.js, Django or Postgres, I can add value from week one. My inbox is open and I reply fast.
             </p>
+            <a className="email-big mono" href={`mailto:${profile.email}`}>{profile.email}</a>
             <div className="cta center">
-              <a className="btn primary big" href={`mailto:${profile.email}?subject=Opportunity%20for%20Prosper`}>Say hello ✉</a>
+              <a className="btn primary big" href={`mailto:${profile.email}?subject=Let's%20talk%20%E2%80%94%20opportunity%20for%20Prosper`}>Say hello ✉</a>
               <button className="btn big" onClick={copyEmail}>{copied ? 'Copied ✓' : 'Copy email'}</button>
             </div>
           </Reveal>

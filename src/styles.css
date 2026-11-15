@@ -310,3 +310,7 @@ h1 {
   .cs-hero { min-height: auto; }
 }
 @media (prefers-reduced-motion: reduce) { .arch-link::after { animation: none; } }
+
+.email-big { display: inline-block; margin-top: 1.5rem; font-size: clamp(1rem, 2.6vw, 1.5rem); color: var(--text); border-bottom: 1px solid rgba(34, 211, 238, .4); padding-bottom: .2rem; transition: color .2s, border-color .2s; word-break: break-all; }
+.email-big:hover { color: var(--cyan); border-color: var(--cyan); }
+.nav .btn.small.primary { color: #05060f; }

@@ -63,6 +63,7 @@ export default function CaseStudy() {
         <nav className="always">
           <a href="../#work" className="back">← <span className="hide-sm">Back to</span> portfolio</a>
           <a className="btn small" href={LIVE} target="_blank" rel="noreferrer">Live site ↗</a>
+          <a className="btn small primary hide-sm" href={`mailto:${profile.email}?subject=Let's%20talk%20%E2%80%94%20opportunity%20for%20Prosper`}>Say hello ✉</a>
         </nav>
       </header>
 
