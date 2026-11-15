@@ -6,6 +6,7 @@ Dark, futuristic 3D portfolio built with **React 19, TypeScript, Vite and Three.
 - 3D-tilt project cards, scroll reveals, typing effect and scroll progress bar
 - Fewer particles on phones; respects "reduced motion"; the 3D bundle lazy-loads so text appears instantly
 - **Case study page** for D4TF Connect at `/d4tf-connect/` (`src/CaseStudy.tsx`)
+- **CV**: edit `cv/cv.html`, then run `node cv/build-cv.cjs` to regenerate `public/Prosper_Otonye_CV.pdf`
 - **All content lives in `src/data.ts`**, so you can edit text, projects and links there
 
 ## Run locally

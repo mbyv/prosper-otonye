@@ -70,6 +70,14 @@ export const projects: Project[] = [
     live: 'https://futureworklandingpage.vercel.app',
   },
   {
+    title: 'DDL Body Repair',
+    tagline: 'Client website · live',
+    description:
+      'Website for DDL Body Repair, a vehicle body-repair business. Designed and built for a real client: responsive, fast, and focused on turning visitors into enquiries.',
+    tags: ['Client project', 'Responsive', 'Vercel'],
+    live: 'https://ddl-body-repair.vercel.app',
+  },
+  {
     title: 'D4TF Backend',
     tagline: 'Containerised service',
     description: 'Python backend service scaffold for D4TF Connect, containerised for deployment.',
