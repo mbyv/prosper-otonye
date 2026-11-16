@@ -76,6 +76,35 @@ export default function App() {
   }
 
   const nav = [['about', 'About'], ['skills', 'Skills'], ['work', 'Projects'], ['experience', 'Experience'], ['contact', 'Contact']]
+  const mailto = `mailto:${profile.email}?subject=Let's%20talk%20%E2%80%94%20opportunity%20for%20Prosper`
+  const [active, setActive] = useState('')
+
+  // Highlight the section currently on screen
+  useEffect(() => {
+    const sections = nav.map(([id]) => document.getElementById(id)).filter(Boolean) as HTMLElement[]
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id) }),
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    sections.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+
+  // Mobile menu: lock page scroll, close on Escape or when the screen gets wide
+  useEffect(() => {
+    if (!menuOpen) return
+    document.body.classList.add('no-scroll')
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setMenuOpen(false) }
+    const mq = window.matchMedia('(min-width: 1101px)')
+    const onWide = () => { if (mq.matches) setMenuOpen(false) }
+    window.addEventListener('keydown', onKey)
+    mq.addEventListener('change', onWide)
+    return () => {
+      document.body.classList.remove('no-scroll')
+      window.removeEventListener('keydown', onKey)
+      mq.removeEventListener('change', onWide)
+    }
+  }, [menuOpen])
 
   return (
     <>
@@ -84,21 +113,47 @@ export default function App() {
       <div className="grain" aria-hidden />
       <div className="progress" ref={progressRef} aria-hidden />
 
-      <header className="nav">
-        <a href="#top" className="logo mono">&lt;PO /&gt;</a>
-        <button className="menu-btn" aria-label="Toggle menu" onClick={() => setMenuOpen((o) => !o)}>
-          <span /><span />
-        </button>
-        <nav className={menuOpen ? 'open' : ''}>
+      <header className={`nav ${menuOpen ? 'menu-open' : ''}`}>
+        <a href="#top" className="logo mono" onClick={() => setMenuOpen(false)}>&lt;PO /&gt;</a>
+        <nav className="nav-links" aria-label="Main">
           {nav.map(([id, label], i) => (
-            <a key={id} href={`#${id}`} onClick={() => setMenuOpen(false)}>
+            <a key={id} href={`#${id}`} className={active === id ? 'active' : ''} aria-current={active === id ? 'true' : undefined}>
               <span className="mono accent">0{i + 1}.</span> {label}
             </a>
           ))}
           <a className="btn small" href={profile.cv} target="_blank" rel="noreferrer">Résumé</a>
-          <a className="btn small primary" href={`mailto:${profile.email}?subject=Let's%20talk%20%E2%80%94%20opportunity%20for%20Prosper`}>Say hello ✉</a>
+          <a className="btn small primary" href={mailto}>Say hello ✉</a>
         </nav>
+        <button
+          className={`menu-btn ${menuOpen ? 'open' : ''}`}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setMenuOpen((o) => !o)}
+        >
+          <span /><span /><span />
+        </button>
       </header>
+
+      {/* Full-screen menu for phones & tablets. Rendered outside <header>: the header's
+          backdrop-filter would otherwise trap this fixed panel inside the header box. */}
+      <div id="mobile-menu" className={`mobile-menu ${menuOpen ? 'open' : ''}`} aria-hidden={!menuOpen} inert={!menuOpen}>
+        <nav aria-label="Mobile">
+          {nav.map(([id, label], i) => (
+            <a key={id} href={`#${id}`} className={active === id ? 'active' : ''} style={{ transitionDelay: `${menuOpen ? 80 + i * 45 : 0}ms` }} onClick={() => setMenuOpen(false)}>
+              <span className="mono accent">0{i + 1}.</span> {label}
+            </a>
+          ))}
+        </nav>
+        <div className="mobile-cta" style={{ transitionDelay: `${menuOpen ? 330 : 0}ms` }}>
+          <a className="btn primary big" href={mailto} onClick={() => setMenuOpen(false)}>Say hello ✉</a>
+          <a className="btn big" href={profile.cv} target="_blank" rel="noreferrer">Download CV</a>
+          <div className="socials mono">
+            <a href={profile.github} target="_blank" rel="noreferrer">GitHub</a>
+            <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          </div>
+        </div>
+      </div>
 
       <main id="top">
         {/* HERO */}

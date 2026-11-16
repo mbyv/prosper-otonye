@@ -69,8 +69,8 @@ function FlowField() {
       uTime: { value: 0 },
       uScroll: { value: 0 },
       uMouse: { value: new THREE.Vector2() },
-      uColorA: { value: new THREE.Color('#22d3ee') },
-      uColorB: { value: new THREE.Color('#a855f7') },
+      uColorA: { value: new THREE.Color('#f59e0b') },
+      uColorB: { value: new THREE.Color('#e11d48') },
       uOpacity: { value: 0.85 },
       uSize: { value: isMobile ? 34 : 42 },
     }),
@@ -143,8 +143,8 @@ function Orb() {
   const uniforms = useMemo(
     () => ({
       uTime: { value: 0 },
-      uColorA: { value: new THREE.Color('#67e8f9') },
-      uColorB: { value: new THREE.Color('#c084fc') },
+      uColorA: { value: new THREE.Color('#fcd34d') },
+      uColorB: { value: new THREE.Color('#fb923c') },
       uOpacity: { value: 1 },
       uSize: { value: isMobile ? 26 : 30 },
     }),
